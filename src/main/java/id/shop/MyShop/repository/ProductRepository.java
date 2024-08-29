@@ -1,6 +1,6 @@
-package id.shop.repository;
+package id.shop.MyShop.repository;
 
-import id.shop.model.Product;
+import id.shop.MyShop.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
