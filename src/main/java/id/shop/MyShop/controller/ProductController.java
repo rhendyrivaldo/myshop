@@ -30,18 +30,18 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        Optional<Product> user = productService.getProduct(id);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        Product product = productService.getProduct(id);
+        return ResponseEntity.ok(product);
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product user) {
-        Product savedUser = productService.createProduct(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        Product savedProduct = productService.createProduct(product);
+        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }
